@@ -1,5 +1,10 @@
 # DUEditor
 
+## 本项目使用说明
+
+[DUEditor使用说明](https://github.com/dhcn/DUEditor/blob/master/DUEditor/readme.md)
+
+
 ## 更新日志：
 ### 0.2Beta版的更新内容：
 - 这个分支更名为:DUEditor
@@ -18,6 +23,7 @@
 
 2017-2-21：修改urls.py配置，删除不再被新版支持的patterns。
 
+
 ## 关于原项目的说明
-原项目(https://github.com/zhangfisher/DjangoUeditor )维护人zhangfishe说已经不再更新项目且欢迎fork修改 ，因此我于2017-2-21日fork此分支，准备开启新的分支,
+原项目[DjangoUEditor](https://github.com/zhangfisher/DjangoUeditor) 维护人zhangfishe说已经不再更新项目且欢迎fork修改 ，因此我于2017-2-21日fork此分支，准备开启新的分支,
 原项目当时的文档见DjangoUeditor.md
