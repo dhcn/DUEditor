@@ -36,10 +36,6 @@ Ueditor HTML编辑器是百度开源的HTML编辑器，
 	UEditorField继承自models.TextField,因此你可以直接将model里面定义的models.TextField直接改成UEditorField即可。
 	UEditorField提供了额外的参数：
         toolbars:配置你想显示的工具栏，取值为mini,normal,full,besttome, 代表小，一般，全部,涂伟忠贡献的一种样式。如果默认的工具栏不符合您的要求，您可以在settings里面配置自己的显示按钮。参见后面介绍。
-        imagePath:图片上传的路径,如"images/",实现上传到"{{MEDIA_ROOT}}/images"文件夹(实际上传目录根据配置确定)
-        filePath:附件上传的路径,如"files/",实现上传到"{{MEDIA_ROOT}}/files"文件夹(实际上传目录根据配置确定)
-        scrawlPath:涂鸦文件上传的路径,如"scrawls/",实现上传到"{{MEDIA_ROOT}}/scrawls"文件夹,如果不指定则默认=imagepath
-        imageManagerPath:图片管理器显示的路径，如"imglib/",实现上传到"{{MEDIA_ROOT}}/imglib",如果不指定则默认=imagepath。
         options：其他UEditor参数，字典类型。参见Ueditor的文档ueditor_config.js里面的说明。
         css:编辑器textarea的CSS样式
         width，height:编辑器的宽度和高度，以像素为单位。
@@ -95,56 +91,7 @@ Ueditor HTML编辑器是百度开源的HTML编辑器，
     </head>
     注：运行collectstatic命令，将所依赖的css,js之类的文件复制到{{STATIC_ROOT}}文件夹里面。
 
-## 8、高级运用：
-
-     ****************
-     动态指定imagePath、filePath、scrawlPath、imageManagerPath
-     ****************
-     这几个路径文件用于保存上传的图片或附件，您可以直接指定路径，如：
-          UEditorField('内容',imagePath="uploadimg/")
-     则图片会被上传到"{{MEDIA_ROOT}}/uploadimg"文件夹，也可以指定为一个函数，如：
-
-      def getImagePath(model_instance=None):
-          return "abc/"
-      UEditorField('内容',imagePath=getImagePath)
-      则图片会被上传到"{{MEDIA_ROOT}}/abc"文件夹。
-     ****************
-     使上传路径(imagePath、filePath、scrawlPath、imageManagerPath)与Model实例字段值相关
-     ****************
-        在有些情况下，我们可能想让上传的文件路径是由当前Model实例字值组名而成，比如：
-        class Blog(Models.Model):
-            Name=models.CharField('姓名',max_length=100,blank=True)
-            Description=UEditorField('描述',blank=True,imagePath=getUploadPath,toolbars="full")
-
-     id  |   Name    |       Description
-     ------------------------------------
-     1   |   Tom     |       ...........
-     2   |   Jack    |       ...........
-
-      我们想让第一条记录上传的图片或附件上传到"{{MEDIA_ROOT}}/Tom"文件夹,第2条记录则上传到"{{MEDIA_ROOT}}/Jack"文件夹。
-      该怎么做呢，很简单。
-      def getUploadPath(model_instance=None):
-          return "%s/" % model_instance.Name
-      在Model里面这样定义：
-      Description=UEditorField('描述',blank=True,imagePath=getUploadPath,toolbars="full")
-      这上面model_instance就是当前model的实例对象。
-      还需要这样定义表单对象：
-      from  DUEditor.forms import UEditorModelForm
-      class UEditorTestModelForm(UEditorModelForm):
-            class Meta:
-                model=Blog
-      特别注意：
-         **表单对象必须是继承自UEditorModelForm，否则您会发现model_instance总会是None。
-         **同时在Admin管理界面中，此特性无效，model_instance总会是None。
-         **在新建表单中，model_instance由于还没有保存到数据库，所以如果访问model_instance.pk可能是空的。因为您需要在getUploadPath处理这种情况
-
-
-class UEditorTestModelForm(UEditorModelForm):
-    class Meta:
-        model=Blog
-
-
-## 9、标签的使用
+## 8、inclusion tag的使用
 
 ```
    {%load ueditor_tags %}
@@ -153,7 +100,7 @@ class UEditorTestModelForm(UEditorModelForm):
    </script>
    {%ueditor "container"%}
 ```
-## 10、其他事项：
+## 9、其他事项：
 
 - 本程序版本号采用a.b.ccc,其中a.b是本程序的号，ccc是ueditor的版本号，如1.2.122，1.2是DjangoUeditor的版本号，122指Ueditor 1.2.2.
 - 本程序安装包里面已经包括了Ueditor，不需要再额外安装。
