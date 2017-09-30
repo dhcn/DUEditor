@@ -4,8 +4,9 @@
 ### 1.0Beta版的更新内容：
 - 这个分支更名为:DUEditor
 - python语言版本升级到3.5
-- 存储基本都使用Django的Storage
+- 存储基本都使用Django的Storage,便于快速切换不同的文件存储backends
 - UEditor版本升级到最新的1.4.33
+- 做了一定的安全加固和配置简化
 
 2017-9-27:这个分支更名为:DUEditor
 
