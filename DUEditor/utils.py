@@ -1,6 +1,7 @@
 #coding: utf-8
-
-#文件大小类
+'''
+@author: stone
+'''
 import hashlib
 import random
 from datetime import datetime

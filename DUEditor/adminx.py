@@ -1,6 +1,6 @@
 #coding:utf-8
 #__author__ = 'sai'
-#DjangoUeditor Xadmin plugin
+#DUEditor Xadmin plugin
 
 import xadmin
 from django.db.models import TextField

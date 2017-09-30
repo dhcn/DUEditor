@@ -1,4 +1,7 @@
 #coding:utf-8
+'''
+@author: stone
+'''
 from importlib import import_module
 
 from django.contrib.auth.decorators import login_required

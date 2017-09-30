@@ -1,32 +1,31 @@
 ﻿Ueditor HTML编辑器是百度开源的HTML编辑器，
 
 本模块帮助在Django应用中集成百度Ueditor HTML编辑器。
-安装包中已经集成Ueditor v1.3.6
+安装包中已经集成Ueditor v1.4.33
 
-使用Django-Ueditor非常简单，方法如下：
+使用DUEditor非常简单，方法如下：
 
 1、安装方法
 	
-	**方法一：下载安装包，在命令行运行：
-		python setup.py install
+	
 	**方法二：使用pip工具在命令行运行(推荐)：
-   		pip install DjangoUeditor
+   		pip install DUEditor
 
 2、在INSTALL_APPS里面增加DjangoUeditor app，如下：
      
 		INSTALLED_APPS = (
 			#........
-    		'DjangoUeditor',
+    		'DUEditor',
 		)
 
 
 3、在urls.py中增加：
 
-	url(r'^ueditor/',include('DjangoUeditor.urls' )),
+	url(r'^ueditor/',include('DUEditor.urls' )),
 
 4、在models中这样定义：
 	
-	from DjangoUeditor.models import UEditorField
+	from DUEditor.models import UEditorField
 	class Blog(models.Model):
     	Name=models.CharField(,max_length=100,blank=True)
     	Content=UEditorField('内容	',height=100,width=500,default='test',imagePath="uploadimg/",imageManagerPath="imglib",toolbars='mini',options={"elementPathEnabled":True},filePath='upload',blank=True)
@@ -53,13 +52,13 @@
 
 	1: 使用forms.UEditorField
 
-	from  DjangoUeditor.forms import UEditorField
+	from  DUEditor.forms import UEditorField
 	class TestUEditorForm(forms.Form):
 	    Description=UEditorField("描述",initial="abc",width=600,height=800)
 	
 	2: widgets.UEditorWidget
 
-	from  DjangoUeditor.widgets import UEditorWidget
+	from  UEditor.widgets import UEditorWidget
 	class TestUEditorForm(forms.Form):
 		Content=forms.CharField(label="内容",widget=UEditorWidget(width=800,height=500, imagePath='aa', filePath='bb',toolbars={}))
 	
@@ -128,7 +127,7 @@
       Description=UEditorField('描述',blank=True,imagePath=getUploadPath,toolbars="full")
       这上面model_instance就是当前model的实例对象。
       还需要这样定义表单对象：
-      from  DjangoUeditor.forms import UEditorModelForm
+      from  DUEditor.forms import UEditorModelForm
       class UEditorTestModelForm(UEditorModelForm):
             class Meta:
                 model=Blog
