@@ -85,7 +85,7 @@ def list_files(request):
     list_start=int(request.GET.get("start",0))
 
     files=[]
-    cur_path= listpath[action]
+    cur_path= listpath[action].format(user_dir=str(request.user.id))
     files=get_files(cur_path,allowFiles[action])
 
     if (len(files)==0):
@@ -202,6 +202,7 @@ def UploadFile(request):
         "basename":upload_original_name,
         "extname":upload_original_ext[1:],
         "filename":get_filename(request.user),
+        "user_dir":str(request.user.id),
     })
     #取得输出文件的路径
     path_format=USettings.UEditorUploadSettings[upload_path_format[action]]
@@ -254,6 +255,7 @@ def catcher_remote_image(request):
                 "basename":remote_original_name,
                 "extname":remote_original_ext[1:],
                 "filename":get_filename(request.user),
+                "user_dir": str(request.user.id),
             })
             Outputilename = get_filename(request.user);
             suffix = remote_original_ext[1:]
