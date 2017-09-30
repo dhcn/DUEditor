@@ -1,13 +1,14 @@
 # DUEditor
 
 ## 更新日志：
-### 1.0Beta版的更新内容：
+### 0.2Beta版的更新内容：
 - 这个分支更名为:DUEditor
 - python语言版本升级到3.5
 - 存储基本都使用Django的Storage,便于快速切换不同的文件存储backends
 - UEditor版本升级到最新的1.4.33
 - 做了一定的安全加固和配置简化
 - 准备做一些易用的include tag
+- 当前暂不支持pip install，使用者请直接把DUEditor拉到自己项目目录即可。
 
 2017-9-27:这个分支更名为:DUEditor
 
@@ -18,5 +19,5 @@
 2017-2-21：修改urls.py配置，删除不再被新版支持的patterns。
 
 ## 关于原项目的说明
-原项目(https://github.com/zhangfisher/DjangoUeditor )维护人zhangfishe说已经不再更新项目且欢迎fork修改 ，因此我于2017-2-21日fork此分支，准备开启新的分支
+原项目(https://github.com/zhangfisher/DjangoUeditor )维护人zhangfishe说已经不再更新项目且欢迎fork修改 ，因此我于2017-2-21日fork此分支，准备开启新的分支,
 原项目当时的文档见DjangoUeditor.md
