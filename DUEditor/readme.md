@@ -153,4 +153,4 @@ class UEditorTestModelForm(UEditorModelForm):
     **目前暂时不支持ueditor的插件
     **别忘记了运行collectstatic命令，该命令可以将ueditor的所有文件复制到{{STATIC_ROOT}}文件夹里面
     **Django默认开启了CSRF中间件，因此如果你的表单没有加入{% csrf_token %}，那么当您上传文件和图片时会失败
-   
+    **不过编辑器里面的图片上传做了CSRF取消设置 
