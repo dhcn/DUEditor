@@ -9,11 +9,11 @@ Ueditor HTML编辑器是百度开源的HTML编辑器，
 
 使用DUEditor非常简单，方法如下：
 
-1、安装方法
+## 1、安装方法
 
     因为配置个性化问题，本项目暂不支持pip install，如想使用，下载以后，把DUEditor扔到django项目目录即可
 
-2、在INSTALL_APPS里面增加DjangoUeditor app，如下：
+## 2、在INSTALL_APPS里面增加DjangoUeditor app，如下：
      
 		INSTALLED_APPS = (
 			#........
@@ -21,11 +21,11 @@ Ueditor HTML编辑器是百度开源的HTML编辑器，
 		)
 
 
-3、在urls.py中增加：
+## 3、在urls.py中增加：
 
 	url(r'^ueditor/',include('DUEditor.urls' )),
 
-4、在models中这样定义：
+## 4、在models中这样定义：
 	
 	from DUEditor.models import UEditorField
 	class Blog(models.Model):
@@ -44,7 +44,7 @@ Ueditor HTML编辑器是百度开源的HTML编辑器，
         css:编辑器textarea的CSS样式
         width，height:编辑器的宽度和高度，以像素为单位。
 
-5、在表单中使用非常简单，与常规的form字段没什么差别，如下：
+## 5、在表单中使用非常简单，与常规的form字段没什么差别，如下：
 	
 	class TestUeditorModelForm(forms.ModelForm):
     	class Meta:
@@ -66,7 +66,7 @@ Ueditor HTML编辑器是百度开源的HTML编辑器，
 	
 	widgets.UEditorWidget和forms.UEditorField的输入参数与上述models.UEditorField一样。
 
-6、Settings配置
+## 6、Settings配置
      
       在Django的Settings可以配置以下参数：
             UEDITOR_SETTINGS={
@@ -86,7 +86,7 @@ Ueditor HTML编辑器是百度开源的HTML编辑器，
                      "location":""         #图片管理器的位置,如果没有指定，默认跟图片路径上传一样
                 },
             }
-7、在模板里面：
+## 7、在模板里面：
 
     <head>
         ......
@@ -95,7 +95,7 @@ Ueditor HTML编辑器是百度开源的HTML编辑器，
     </head>
     注：运行collectstatic命令，将所依赖的css,js之类的文件复制到{{STATIC_ROOT}}文件夹里面。
 
-8、高级运用：
+## 8、高级运用：
 
      ****************
      动态指定imagePath、filePath、scrawlPath、imageManagerPath
@@ -144,13 +144,20 @@ class UEditorTestModelForm(UEditorModelForm):
         model=Blog
 
 
+## 9、标签的使用
 
+```
+   {%load ueditor_tags %}
+   <script id="container" name="container"  style="display: inline-block;" type="text/plain">
+     初始化内容
+   </script>
+   {%ueditor "container"%}
+```
+## 10、其他事项：
 
-8、其他事项：
-
-    **本程序版本号采用a.b.ccc,其中a.b是本程序的号，ccc是ueditor的版本号，如1.2.122，1.2是DjangoUeditor的版本号，122指Ueditor 1.2.2.
-    **本程序安装包里面已经包括了Ueditor，不需要再额外安装。
-    **目前暂时不支持ueditor的插件
-    **别忘记了运行collectstatic命令，该命令可以将ueditor的所有文件复制到{{STATIC_ROOT}}文件夹里面
-    **Django默认开启了CSRF中间件，因此如果你的表单没有加入{% csrf_token %}，那么当您上传文件和图片时会失败
-    **不过编辑器里面的图片上传做了CSRF取消设置 
+- 本程序版本号采用a.b.ccc,其中a.b是本程序的号，ccc是ueditor的版本号，如1.2.122，1.2是DjangoUeditor的版本号，122指Ueditor 1.2.2.
+- 本程序安装包里面已经包括了Ueditor，不需要再额外安装。
+- 目前暂时不支持ueditor的插件
+- 别忘记了运行collectstatic命令，该命令可以将ueditor的所有文件复制到{{STATIC_ROOT}}文件夹里面
+- Django默认开启了CSRF中间件，因此如果你的表单没有加入{% csrf_token %}，那么当您上传文件和图片时会失败
+- 不过编辑器里面的图片上传做了CSRF取消设置 
