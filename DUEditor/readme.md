@@ -1,4 +1,8 @@
-﻿Ueditor HTML编辑器是百度开源的HTML编辑器，
+# DUEditor使用文档
+
+说在前面:本项目改造自DjangoUeditor，本文档亦然
+
+Ueditor HTML编辑器是百度开源的HTML编辑器，
 
 本模块帮助在Django应用中集成百度Ueditor HTML编辑器。
 安装包中已经集成Ueditor v1.4.33
@@ -6,10 +10,8 @@
 使用DUEditor非常简单，方法如下：
 
 1、安装方法
-	
-	
-	**方法二：使用pip工具在命令行运行(推荐)：
-   		pip install DUEditor
+
+    因为配置个性化问题，本项目暂不支持pip install，如想使用，下载以后，把DUEditor扔到django项目目录即可
 
 2、在INSTALL_APPS里面增加DjangoUeditor app，如下：
      
@@ -34,8 +36,8 @@
 	UEditorField继承自models.TextField,因此你可以直接将model里面定义的models.TextField直接改成UEditorField即可。
 	UEditorField提供了额外的参数：
         toolbars:配置你想显示的工具栏，取值为mini,normal,full,besttome, 代表小，一般，全部,涂伟忠贡献的一种样式。如果默认的工具栏不符合您的要求，您可以在settings里面配置自己的显示按钮。参见后面介绍。
-        imagePath:图片上传的路径,如"images/",实现上传到"{{MEDIA_ROOT}}/images"文件夹
-        filePath:附件上传的路径,如"files/",实现上传到"{{MEDIA_ROOT}}/files"文件夹
+        imagePath:图片上传的路径,如"images/",实现上传到"{{MEDIA_ROOT}}/images"文件夹(实际上传目录根据配置确定)
+        filePath:附件上传的路径,如"files/",实现上传到"{{MEDIA_ROOT}}/files"文件夹(实际上传目录根据配置确定)
         scrawlPath:涂鸦文件上传的路径,如"scrawls/",实现上传到"{{MEDIA_ROOT}}/scrawls"文件夹,如果不指定则默认=imagepath
         imageManagerPath:图片管理器显示的路径，如"imglib/",实现上传到"{{MEDIA_ROOT}}/imglib",如果不指定则默认=imagepath。
         options：其他UEditor参数，字典类型。参见Ueditor的文档ueditor_config.js里面的说明。
