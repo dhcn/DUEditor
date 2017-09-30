@@ -30,7 +30,7 @@ Ueditor HTML编辑器是百度开源的HTML编辑器，
 	from DUEditor.models import UEditorField
 	class Blog(models.Model):
     	Name=models.CharField(,max_length=100,blank=True)
-    	Content=UEditorField('内容	',height=100,width=500,default='test',imagePath="uploadimg/",imageManagerPath="imglib",toolbars='mini',options={"elementPathEnabled":True},filePath='upload',blank=True)
+    	Content=UEditorField('内容	',height=100,width=500,default='test',toolbars='mini',options={"elementPathEnabled":True},blank=True)
 
 	说明：
 	UEditorField继承自models.TextField,因此你可以直接将model里面定义的models.TextField直接改成UEditorField即可。
@@ -58,7 +58,7 @@ Ueditor HTML编辑器是百度开源的HTML编辑器，
 
 	from  UEditor.widgets import UEditorWidget
 	class TestUEditorForm(forms.Form):
-		Content=forms.CharField(label="内容",widget=UEditorWidget(width=800,height=500, imagePath='aa', filePath='bb',toolbars={}))
+		Content=forms.CharField(label="内容",widget=UEditorWidget(width=800,height=500,toolbars={}))
 	
 	widgets.UEditorWidget和forms.UEditorField的输入参数与上述models.UEditorField一样。
 
