@@ -6,12 +6,6 @@ import hashlib
 import random
 from datetime import datetime
 
-try:
-    from PIL import Image, ImageOps
-except ImportError:
-    import Image
-    import ImageOps
-
 import mimetypes
 
 
@@ -149,4 +143,9 @@ def get_image_format(extension):
     return mimetypes.types_map[extension]
 
 def image_verify(f):
+    try:
+        from PIL import Image, ImageOps
+    except ImportError:
+        import Image
+        import ImageOps
     Image.open(f).verify()

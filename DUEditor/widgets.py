@@ -47,11 +47,11 @@ class UEditorWidget(forms.Textarea):
         self.event_handler=event_handler
         #上传路径
         self.upload_settings = upload_settings.copy()
-        #简化参数传递，不要这两个个format了
-        #self.upload_settings.update({
-        #    "imagePathFormat": imagePath,
-        #    "filePathFormat": filePath
-        #})
+        #简化参数传递，建议不要这两个format
+        self.upload_settings.update({
+            "imagePathFormat": imagePath,
+            "filePathFormat": filePath
+        })
         #保存
         self._upload_settings =self.upload_settings.copy()
         self.recalc_path(None)
