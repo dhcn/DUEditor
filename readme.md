@@ -20,7 +20,7 @@
 
 2017-8-17:发现一个爬取图片存储功能的bug，如果对方图片地址是目录式无后缀地址，将会导致允许类型验证失败，于是乎爬取失败。
 
-2017-2-28:把面向阿里云oss的一个ueditor views版发布出来，其中backends来自于这个项目：https://github.com/xiewenya/django-aliyun-oss2-storage 不过目前没有修改listfiles接口。
+2017-2-28:把面向阿里云oss的一个ueditor views版发布出来，其中backends来自于这个项目：https://github.com/xiewenya/django-aliyun-oss2-storage。
 
 2017-2-21：修改urls.py配置，删除不再被新版支持的patterns。
 
