@@ -9,6 +9,7 @@
 ### 0.2Beta版的更新内容：
 - 这个分支更名为:DUEditor
 - python语言版本升级到3.5+(比3.5低的py3版本可能也支持，但未做测试，不做许诺)
+- 支持目前最新Django stable版本1.11.*
 - 存储基本都使用Django的Storage,便于快速切换不同的文件存储backends
 - UEditor版本升级到最新的1.4.33
 - 安全加固:取消前端path配置传递机制
