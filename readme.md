@@ -2,7 +2,7 @@
 
 ## 本项目使用说明
 
-[DUEditor使用说明](https://github.com/dhcn/DUEditor/blob/master/DUEditor/readme.md)
+[DUEditor使用说明](https://github.com/dhcn/DUEditor/blob/master/DUEditor/userguide.md)
 
 
 ## 更新日志：
