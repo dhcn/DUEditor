@@ -227,6 +227,11 @@ def UploadFile(request):
     }
     return HttpResponse(json.dumps(return_info,ensure_ascii=False),content_type="application/javascript")
 
+mime2type = {}
+mime2type["image/gif"]="gif"
+mime2type["image/jpeg"]="jpg"
+mime2type["image/png"]="png"
+mime2type["image/bmp"]="bmp"
 @csrf_exempt
 def catcher_remote_image(request):
     """远程抓图，当catchRemoteImageEnable:true时，
@@ -241,6 +246,7 @@ def catcher_remote_image(request):
     max_size=int(request.GET.get("catcherMaxSize",USettings.UEditorUploadSettings.get("catcherMaxSize",0)))
 
     remote_urls=request.POST.getlist("source[]",[])
+    print(remote_urls)
     catcher_infos=[]
     path_format_var=get_path_format_vars()
 
@@ -250,19 +256,14 @@ def catcher_remote_image(request):
         remote_original_name,remote_original_ext=os.path.splitext(remote_file_name)
 
         #文件类型检验
-        if remote_original_ext  in allow_type:
+        if len(remote_original_ext)==0 or remote_original_ext  in allow_type:
             path_format_var.update({
                 "basename":remote_original_name,
                 "extname":remote_original_ext[1:],
                 "filename":get_filename(request.user),
                 "user_dir": str(request.user.id),
             })
-            Outputilename = get_filename(request.user);
-            suffix = remote_original_ext[1:]
 
-            tempPath = 'temp/{filename}.{extname}'.format(**path_format_var)
-            #计算临时本地保存的文件名,临时本地保存主要是为阿里云OSS此类的的Storage准备的
-            o_filename=os.path.join(settings.MEDIA_ROOT,tempPath).replace("\\","/")
             #读取远程图片文件
 
             try:
@@ -270,11 +271,20 @@ def catcher_remote_image(request):
             except Exception as E:
                 state = u"抓取图片错误：%s" % E.message
              #将抓取到的文件写入文件
+            if len(remote_original_ext) == 0:
+                if "Content-Type" in remote_image.headers and remote_image.headers["Content-Type"] in mime2type :
+                    path_format_var.update({
+                        "extname": mime2type[remote_image.headers["Content-Type"]],
+                    })
+                else:
+                    state = u"不能判断抓取图片文件后缀"
+            tempPath = 'temp/{filename}.{extname}'.format(**path_format_var)
+            # 计算临时本地保存的文件名,临时本地保存主要是为阿里云OSS此类的的Storage准备的
+            o_filename = os.path.join(settings.MEDIA_ROOT, tempPath).replace("\\", "/")
             with open(o_filename, 'wb') as f:
                 f.write(remote_image.read())
                 f.close()
             filesize = os.path.getsize(o_filename)
-            print(filesize)
             if max_size != 0:
                 from .utils import FileSize
                 MF = FileSize(max_size)
