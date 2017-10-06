@@ -26,6 +26,9 @@
 
 2017-2-21：修改urls.py配置，删除不再被新版支持的patterns。
 
+## License
+
+DUEditor is available under the terms of the MIT License
 
 ## 关于原项目的说明
 原项目[DjangoUEditor](https://github.com/zhangfisher/DjangoUeditor) 维护人zhangfishe说已经不再更新项目且欢迎fork修改 ，因此我于2017-2-21日fork此分支，准备开启新的分支,
