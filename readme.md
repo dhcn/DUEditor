@@ -17,6 +17,8 @@
 - 开发易用的include tag
 - 修正无文件类型后缀URL爬取的bug
 - 因为配置个性化问题，暂时不准备支持pip install，使用者请直接把DUEditor拉到自己项目目录即可。
+- 返回响应的方式改为JsonResponse
+- 为get_ueditor_settings接口添加了Jsonp调用方式的处理代码
 
 2017-9-27:这个分支更名为:DUEditor
 

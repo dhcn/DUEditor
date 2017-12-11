@@ -5,7 +5,7 @@
 from importlib import import_module
 
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import DUEditor.settings as USettings
 import os
 import json
@@ -37,7 +37,11 @@ def save_upload_file(PostFile,FilePath):
 
 @csrf_exempt
 def get_ueditor_settings(request):
-    return HttpResponse(json.dumps(USettings.UEditorUploadSettings,ensure_ascii=False), content_type="application/javascript")
+    if "callback" not in request.GET:
+        return JsonResponse(USettings.UEditorUploadSettings)
+    else:
+        return_str = "{0}({1})".format(request.GET["callback"],json.dumps(USettings.UEditorUploadSettings,ensure_ascii=False))
+        return HttpResponse(return_str)
 
 @csrf_exempt
 @login_required
@@ -103,7 +107,7 @@ def list_files(request):
             "total":len(files)
         }
 
-    return HttpResponse(json.dumps(return_info),content_type="application/javascript")
+    return JsonResponse(return_info)
 
 
 def get_files(cur_path, allow_types=[]):
@@ -225,7 +229,8 @@ def UploadFile(request):
         'state': state,                         #上传状态，成功时返回SUCCESS,其他任何值将原样返回至图片上传框中
         'size': upload_file_size
     }
-    return HttpResponse(json.dumps(return_info,ensure_ascii=False),content_type="application/javascript")
+    return JsonResponse(return_info)
+
 
 mime2type = {}
 mime2type["image/gif"]="gif"
@@ -317,7 +322,7 @@ def catcher_remote_image(request):
         "list":catcher_infos
     }
 
-    return HttpResponse(json.dumps(return_info,ensure_ascii=False),content_type="application/javascript")
+    return JsonResponse(return_info)
 
 
 #涂鸦功能上传处理
