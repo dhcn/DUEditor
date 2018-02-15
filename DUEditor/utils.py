@@ -1,6 +1,6 @@
 #coding: utf-8
 '''
-@author: stone
+@author: Hayden
 '''
 import hashlib
 import random

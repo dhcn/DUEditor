@@ -8,7 +8,7 @@ setup(
     version='0.2.beta',
     packages=find_packages(),
     include_package_data=True,
-    author="Stone",
+    author="Hayden",
     author_email="dhcn@163.com",
     description=("The plugin for integrating Baidu UEditor into Django Project."),
     long_description="New Django UEditor Plugin",

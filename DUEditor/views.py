@@ -1,6 +1,6 @@
 #coding:utf-8
 '''
-@author: stone
+@author: Hayden
 '''
 from importlib import import_module
 
