@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="DUEditor",
-    version='0.2.beta',
+    version='0.2.1beta',
     packages=find_packages(),
     include_package_data=True,
     author="Hayden",
