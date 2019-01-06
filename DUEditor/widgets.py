@@ -115,7 +115,7 @@ class UEditorWidget(forms.Textarea):
             pass
 
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         if value is None: value = ''
         #传入模板的参数
         editor_id="id_%s" % name.replace("-", "_")

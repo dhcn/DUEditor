@@ -6,6 +6,11 @@
 
 
 ## 更新日志：
+
+##### 2019-1-6
+- bugfix:render() got an unexpected keyword argument 'renderer'
+- cause:https://stackoverflow.com/questions/52039654/django-typeerror-render-got-an-unexpected-keyword-argument-renderer
+
 ### 0.2Beta版的更新内容：
 - 这个分支更名为:DUEditor
 - python语言版本升级到3.5+(比3.5低的py3版本可能也支持，但未做测试，不做许诺)
@@ -20,13 +25,13 @@
 - 返回响应的方式改为JsonResponse
 - 为get_ueditor_settings接口添加了Jsonp调用方式的处理代码
 
-2017-9-27:这个分支更名为:DUEditor
+##### 2017-9-27:这个分支更名为:DUEditor
 
-2017-8-17:发现一个爬取图片存储功能的bug，如果对方图片地址是目录式无后缀地址，将会导致允许类型验证失败，于是乎爬取失败。
+##### 2017-8-17:发现一个爬取图片存储功能的bug，如果对方图片地址是目录式无后缀地址，将会导致允许类型验证失败，于是乎爬取失败。
 
-2017-2-28:把面向阿里云oss的一个ueditor views版发布出来，其中backends来自于这个项目：https://github.com/xiewenya/django-aliyun-oss2-storage。
+##### 2017-2-28:把面向阿里云oss的一个ueditor views版发布出来，其中backends来自于这个项目：https://github.com/xiewenya/django-aliyun-oss2-storage。
 
-2017-2-21：修改urls.py配置，删除不再被新版支持的patterns。
+##### 2017-2-21：修改urls.py配置，删除不再被新版支持的patterns。
 
 ## License
 
