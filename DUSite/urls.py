@@ -1,6 +1,7 @@
 #coding:utf-8
 from django.conf.urls import include, url
 from django.conf.urls.static import static
+from django.urls import path
 from django.views.static import serve
 
 import DUSite.settings
@@ -14,7 +15,8 @@ urlpatterns = [
     # url(r'^$', 'DUSite.views.home', name='home'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
-    url(r'^admin/', include(admin.site.urls)),
+    # url(r'^admin/', include('admin.site.urls')),
+    path('admin/', admin.site.urls),
     url(r'^ueditor/',include('DUEditor.urls')),
     url(r'^test/$',TestUEditorModel),
     url(r'^test2/$',TestUEditor),
