@@ -14,10 +14,10 @@
 ### 0.2Beta版的更新内容(2017-10)：
 - 这个分支更名为:DUEditor
 - python语言版本升级到3.5+(比3.5低的py3版本可能也支持，但未做测试，不做许诺)
-- 支持目前Django版本1.11.* 和最新版本2.1.*
+- 支持目前Django版本1.11.* 和最新版本2.*
 - 存储基本都使用Django的Storage,便于快速切换不同的文件存储backends
 - UEditor版本升级到最新的1.4.33
-- 安全加固:取消前端path配置传递机制
+- 安全加固:取消前端path配置传参机制
 - 简化设计:path生成机制简化
 - 开发易用的include tag
 - 修正无文件类型后缀URL爬取的bug
@@ -29,7 +29,7 @@
 
 ##### 2017-8-17:发现一个爬取图片存储功能的bug，如果对方图片地址是目录式无后缀地址，将会导致允许类型验证失败，于是乎爬取失败。
 
-##### 2017-2-28:把面向阿里云oss的一个ueditor views版发布出来，其中backends来自于这个项目：https://github.com/xiewenya/django-aliyun-oss2-storage。
+##### 2017-2-28:把面向阿里云oss的一个ueditor views版发布出来，其中backends来自于这个项目：https://github.com/xiewenya/django-aliyun-oss2-storage
 
 ##### 2017-2-21：修改urls.py配置，删除不再被新版支持的patterns。
 
