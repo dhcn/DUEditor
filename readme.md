@@ -7,6 +7,9 @@
 
 ## 更新日志：
 
+##### 2019-8-19
+- fix urls.py中不兼容的配置格式
+
 ##### 2019-1-6
 - bugfix:render() got an unexpected keyword argument 'renderer'
 - cause:https://stackoverflow.com/questions/52039654/django-typeerror-render-got-an-unexpected-keyword-argument-renderer
