@@ -1,7 +1,7 @@
 #coding:utf-8
 from TestApp.forms import UEditorTestModelForm,TestUEditorForm
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from TestApp.models import Blog
 
 def TestUEditor(request):
@@ -12,7 +12,7 @@ def TestUEditor(request):
             initial={'Description': u'测试'}
         )
 
-    return render_to_response('test2.html', {'form': form})
+    return render(request,'test2.html', {'form': form})
 
 def TestUEditorModel(request):
     if request.method == 'POST':
@@ -20,7 +20,7 @@ def TestUEditorModel(request):
         form = UEditorTestModelForm(request.POST)
         if form.is_valid():
             form.save()
-            return render_to_response('test.html', {'form': form})
+            return render(request,'test.html', {'form': form})
         else:
             return HttpResponse(u"数据校验错误")
     else:
@@ -31,7 +31,7 @@ def TestUEditorModel(request):
             form = UEditorTestModelForm(
                 initial={'Description': '测试'}
             )
-        return render_to_response('test.html', {'form': form})
+        return render(request,'test.html', {'form': form})
 
 
 def ajaxcmd(request):
