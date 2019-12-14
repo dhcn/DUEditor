@@ -6,9 +6,9 @@
 
 
 ## 更新日志：
-#### 2019-12-14
+##### 2019-12-14
 
-- update for Django 3.0 new version
+- Update for Django 3.0 new version
 
 ##### 2019-8-19
 - fix urls.py中不兼容的配置格式
