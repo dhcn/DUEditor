@@ -35,4 +35,4 @@ def TestUEditorModel(request):
 
 
 def ajaxcmd(request):
-    return HttpResponse(u"我来自后端",content_type="plain/text")
+    return HttpResponse(u"我来自后端",content_type="text/html")
